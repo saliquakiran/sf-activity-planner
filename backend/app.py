@@ -16,7 +16,8 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
 
 # Configuration
-PROLOG_FILE_PATH = '/Users/saliquakiran/Desktop/San Francisco Weekend Planner/backend/sf_weekend_kb.pl'
+# Use relative path for deployment compatibility
+PROLOG_FILE_PATH = os.path.join(os.path.dirname(__file__), 'sf_weekend_kb.pl')
 
 # Global variables
 prolog = None

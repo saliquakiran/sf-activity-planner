@@ -42,6 +42,7 @@ This will:
 #### Backend Setup
 ```bash
 cd backend
+python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 python app.py
@@ -78,6 +79,12 @@ San Francisco Weekend Planner/
 ├── start_app.sh               # Startup script
 └── README.md                  # This file
 ```
+
+## 🚀 Deployment
+
+Ready to deploy? See **[DEPLOYMENT.md](DEPLOYMENT.md)** for step-by-step instructions to deploy to production using:
+- **Backend**: Railway (supports SWI-Prolog)
+- **Frontend**: Vercel (optimized for React)
 
 ## 🔧 API Endpoints
 
