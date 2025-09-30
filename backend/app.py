@@ -56,14 +56,21 @@ def initialize_prolog():
     """Initialize Prolog and load the knowledge base."""
     global prolog, all_askable_values
     
-    prolog = Prolog()
-    
     try:
+        print(f"Attempting to initialize Prolog...")
+        print(f"Prolog file path: {PROLOG_FILE_PATH}")
+        print(f"File exists: {os.path.exists(PROLOG_FILE_PATH)}")
+        
+        prolog = Prolog()
+        print("✓ Prolog instance created")
+        
         # Register the foreign predicate for API mode
         registerForeign(read_py_foreign_api, arity=2, name="read_py_foreign")
+        print("✓ Foreign predicate registered")
         
         # Load the knowledge base
         prolog.consult(PROLOG_FILE_PATH)
+        print("✓ Knowledge base loaded")
         
         # Load askable values
         all_askable_values = {}
@@ -74,9 +81,12 @@ def initialize_prolog():
             if values_query and values_query[0]['ValidValues']:
                 all_askable_values[attribute] = [str(v) for v in values_query[0]['ValidValues']]
         
+        print(f"✓ Loaded {len(all_askable_values)} askable attributes")
         return True
     except Exception as e:
-        print(f"Error initializing Prolog: {e}")
+        print(f"❌ Error initializing Prolog: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def read_py_foreign_api(Attribute_term, Result_var):
