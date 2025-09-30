@@ -80,11 +80,17 @@ San Francisco Weekend Planner/
 └── README.md                  # This file
 ```
 
-## 🚀 Deployment
+## 🚀 Live Deployment
 
-Ready to deploy? See **[DEPLOYMENT.md](DEPLOYMENT.md)** for step-by-step instructions to deploy to production using:
-- **Backend**: Railway (supports SWI-Prolog)
-- **Frontend**: Vercel (optimized for React)
+### Production URLs
+- **Frontend**: https://sf-activity-planner.vercel.app/api/health
+- **Backend API**: https://sf-activity-planner-backend-production.up.railway.app
+
+### Deployment Setup
+The application is deployed using:
+- **Backend**: Railway (Docker-based, supports SWI-Prolog)
+- **Frontend**: Vercel (optimized for React/static sites)
+
 
 ## 🔧 API Endpoints
 
