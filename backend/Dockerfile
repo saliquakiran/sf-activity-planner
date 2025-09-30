@@ -21,5 +21,5 @@ COPY . .
 # Expose port (Railway will override this with $PORT)
 EXPOSE 8080
 
-# Run gunicorn
-CMD gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+# Run gunicorn (using shell form to expand $PORT)
+CMD ["sh", "-c", "gunicorn app:app --bind 0.0.0.0:${PORT:-8080} --workers 1 --timeout 120"]
