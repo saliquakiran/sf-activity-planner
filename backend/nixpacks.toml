@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python311", "swiProlog"]
+nixPkgs = ["python311", "swi-prolog"]
 
 [phases.install]
 cmds = ["pip install -r requirements.txt"]
