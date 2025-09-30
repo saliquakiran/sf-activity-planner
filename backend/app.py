@@ -267,14 +267,15 @@ def get_all_places():
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
+# Initialize Prolog when module is imported (for production with gunicorn)
+print("Initializing SF Weekend Planner API...")
+if not initialize_prolog():
+    print("❌ Failed to initialize Prolog. Please check your knowledge base file.")
+    sys.exit(1)
+print("✅ Prolog initialized successfully")
+
 if __name__ == '__main__':
-    print("Initializing SF Weekend Planner API...")
-    if initialize_prolog():
-        print("✅ Prolog initialized successfully")
-        print("🚀 Starting Flask API server...")
-        print("📱 Frontend will be available at http://localhost:3000")
-        print("🔗 API will be available at http://localhost:5001")
-        app.run(debug=True, host='0.0.0.0', port=5001)
-    else:
-        print("❌ Failed to initialize Prolog. Please check your knowledge base file.")
-        sys.exit(1)
+    print("🚀 Starting Flask API server...")
+    print("📱 Frontend will be available at http://localhost:3000")
+    print("🔗 API will be available at http://localhost:5001")
+    app.run(debug=True, host='0.0.0.0', port=5001)
